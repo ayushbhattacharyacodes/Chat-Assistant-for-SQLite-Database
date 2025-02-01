@@ -1,0 +1,13 @@
+langchain
+langchain-community
+langchain-experimental
+openai
+
+google-generativeai
+langchain-google-genai
+langchain_openai
+
+streamlit
+streamlit_chat
+
+python-dotenv

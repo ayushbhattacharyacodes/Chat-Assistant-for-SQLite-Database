@@ -1,0 +1,44 @@
+CREATE TABLE Employees(
+    ID INTEGER NOT NULL PRIMARY KEY,
+    Name VARCHAR(150) NOT NULL,
+    Department VARCHAR(100) NOT NULL,
+    Salary INT NOT NULL,
+    Hire_Date TEXT NOT NULL
+);
+
+INSERT INTO Employees
+(ID,Name,Department,Salary,Hire_Date)
+VALUES
+(1,'Alice','Sales',50000,'2021-01-15'),
+(2,'Bob','Engineering',70000,'2020-06-10'),
+(3,'Charlie','Marketing',60000,'2022-03-20'),
+(4,'Denver','Executive',150000,'2019-11-30'),
+(5,'Eugine','Engineering',55000,'2021-04-05'),
+(6,'Frank','Sales',45000,'2020-06-18'),
+(7,'Ginny','Admin',40000,'2019-12-30'),
+(8,'Kayla','Accounting',57000,'2019-12-30'),
+(9,'Rajesh','Marketing',75000,'2022-01-07'),
+(10,'Devesh','Accounting',58000,'2021-07-15'),
+(11,'Cody','Engineering',62000,'2019-12-01'),
+(12,'Katherine','Admin',35000,'2022-11-20'),
+(13,'Angela','Executive',120000,'2022-01-08'),
+(14,'Jessica','Accounting',52000,'2021-12-08'),
+(15,'Priya','Sales',42000,'2022-11-20')
+   SELECT 
+   strftime('%Y-%m-%d', Hire_Date) AS Hire_Date 
+   FROM Employees;
+
+
+create table Departments
+(
+ID INTEGER NOT NULL PRIMARY KEY,
+Name VARCHAR(150) NOT NULL,
+Manager VARCHAR(150) NOT NULL
+)
+
+INSERT INTO Departments (ID,Name,Manager)
+VALUES
+(1,'Sales','Alice'),
+(2,'Engineering','Bob'),
+(3,'Marketing','Charlie')
+
