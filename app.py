@@ -34,9 +34,7 @@ def generate_response(user_input, conversation_chain, chain):
 
 def conversation_chat(user_input,conversation_chain,chain,history):
     response = conversation_chain.invoke(user_input)
-    if len(response['result']) == 0 :
-        response['result'] = 'Unfortunately, there is insufficient data to give an answer..'
-
+    
     final_response = chain.invoke(f"Based on the following information generate human readable response {response['query'],response['result']}")
     history.append((user_input,final_response))  
 
@@ -54,7 +52,7 @@ def display_generated_responses(reply_container):
 def main():
     initialize_session_state()
     
-    st.title("DBCaretaker")
+    st.title("DBChef👨‍🍳")
 
     hide_streamlit_style = """
       <style>

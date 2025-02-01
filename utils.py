@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain_core.prompts import PromptTemplate
 from langchain.memory.buffer import ConversationBufferMemory
@@ -11,23 +11,20 @@ import os
 
 def read_properties_file():
     load_dotenv()
-
     db_path = os.getenv("db")
-    openai_api_key = os.getenv("OPENAI_API_KEY")
 
-    return db_path,openai_api_key
+    return db_path
 
 def get_properties():
     try:
-        db_path,openai_api_key = read_properties_file()
-        return db_path, openai_api_key
+        db_path= read_properties_file()
+        return db_path
     except FileNotFoundError as e:
         raise e
     
-def get_llm(openai_api_key):
-    llm = ChatOpenAI(model="gpt-3.5-turbo",
-                     openai_api_key=openai_api_key,
-                     temperature=0.1
+def get_llm():
+    llm = ChatOllama(model="llama3.2",
+                     temperature=0.4
                      )
 
     return llm    
@@ -38,9 +35,9 @@ def db_connection(db):
 
 def create_conversational_chain():
     try:
-        db,openai_api_key = get_properties()
+        db = get_properties()
 
-        llm = get_llm(openai_api_key)
+        llm = get_llm()
 
         db = db_connection(db) 
 

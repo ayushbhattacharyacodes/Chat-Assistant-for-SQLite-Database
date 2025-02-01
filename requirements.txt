@@ -1,11 +1,8 @@
 langchain
 langchain-community
 langchain-experimental
-openai
 
-google-generativeai
-langchain-google-genai
-langchain_openai
+langchain-ollama
 
 streamlit
 streamlit_chat
