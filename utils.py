@@ -12,18 +12,19 @@ import os
 def read_properties_file():
     load_dotenv()
     db_path = os.getenv("db")
-
-    return db_path
+    url = os.getenv("BASE_URL")
+    return db_path,url
 
 def get_properties():
     try:
-        db_path= read_properties_file()
-        return db_path
+        db_path,url = read_properties_file()
+        return db_path,url
     except FileNotFoundError as e:
         raise e
     
-def get_llm():
-    llm = ChatOllama(model="llama3.2",
+def get_llm(url):
+    llm = ChatOllama(model="llama3.2-vision",
+                     base_url=url,
                      temperature=0.4
                      )
 
@@ -35,9 +36,9 @@ def db_connection(db):
 
 def create_conversational_chain():
     try:
-        db = get_properties()
+        db,url = get_properties()
 
-        llm = get_llm()
+        llm = get_llm(url)
 
         db = db_connection(db) 
 
